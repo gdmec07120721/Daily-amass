@@ -1,0 +1,32 @@
+@charset "utf-8";
+/* reset start */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td,img{margin:0; padding:0; -webkit-touch-callout:none}
+fieldset,img {border:0 none;}
+img{vertical-align:top}
+ol,ul,li{list-style:none} 
+table{border-collapse:collapse; border-spacing:0;}
+input,textarea,button{ -webkit-appearance:none; -moz-appearance:none; -webkit-border-radius:0;}
+/*html5 reset*/
+header, footer, section, nav, menu, details, hgroup, figure, figcaption, article, aside{margin:0;padding:0;}
+a,a:active{ text-decoration:none; outline:none;}
+.clearfix:before,.clearfix:after{ content:""; display:table;}.clearfix:after{ clear:both;}.clearfix{ *zoom:1;}
+a,input,button,textarea,label,select,span,img{-webkit-tap-highlight-color:rgba(255,0,0,0); -moz-tap-highlight-color:rgba(0, 0, 0, 0)}
+/* reset end */
+body{font:14px/24px  Arial, "Microsoft YaHei"; color:#282828; background:#EEEEEE; -webkit-text-size-adjust:none;-moz-text-size-adjust:none;-ms-text-size-adjust:none;text-size-adjust:none; min-width:320px; max-width: 750px; margin: 0 auto}
+input,button,select,textarea{font-family:"Microsoft YaHei"}
+input,button,select,textarea{ outline:none}
+html,body{ min-height: 100%}
+em{font-style: normal;}
+
+.btn{width: 100px; height: 44px; line-height: 44px; position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin: auto; border: 0; cursor: pointer;}
+.dialog{position: fixed; left: 0; right: 0; top: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 10; text-align: center;}
+.dialog:after{height: 100%;}
+.dialog_content,
+.dialog:after{content: ""; display: inline-block; vertical-align: middle;}
+.dialog_content{width: 300px;}
+.dialog_inner{padding: 30px 15px; background: #fff;}
+.dialog_btn_wrap{width: 100%; display: table; white-space: nowrap;}
+.dialog_btn{ width: 50%; display: table-cell; border: 1px solid #eee; background: #ddd; padding: 10px 0; cursor: pointer; color: #333;}
+.dialog_btn:active{background: #eee;color: #333;}
+.dialog_btn:focus{outline: none;}
+.tip{height: 100px; text-align: center;  color: red; position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin: auto; }
