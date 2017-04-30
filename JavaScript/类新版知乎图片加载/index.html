@@ -42,8 +42,11 @@
 				}
 
 				loadImg.VagueImage.forEach(function(item, index, array){
-					console.log(item.offsetTop)
 					if (viewportH >= item.offsetTop) {
+						var canvas = document.createElement('canvas');
+						canvas.width = item.width;
+						canvas.height = item.height;
+						canvas.style.filter = 'blur(10px)';
 						loadImage(item.getAttribute('data-src'))
 					}
 				})
