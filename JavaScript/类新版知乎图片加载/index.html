@@ -13,9 +13,9 @@
 		<noscript>&amp;lt;img data-rawwidth="960" data-rawheight="716" src="https://pic3.zhimg.com/0cee8b160e9f4513c3aa01eca63a2fd6_b.jpeg" class="origin_image zh-lightbox-thumb" width="960" data-original="https://pic3.zhimg.com/0cee8b160e9f4513c3aa01eca63a2fd6_r.jpeg"&amp;gt;</noscript>
 		<span><div data-reactroot="" class="VagueImage origin_image zh-lightbox-thumb" data-src="https://pic1.zhimg.com/4bba8ec545a2a19beb405059e2adf0b4_b.jpeg" style="width: 640px; height: 640px;"></div></span>
 		<noscript>&amp;lt;img data-rawwidth="960" data-rawheight="716" src="https://pic3.zhimg.com/0cee8b160e9f4513c3aa01eca63a2fd6_b.jpeg" class="origin_image zh-lightbox-thumb" width="960" data-original="https://pic3.zhimg.com/0cee8b160e9f4513c3aa01eca63a2fd6_r.jpeg"&amp;gt;</noscript>
-		<span><div data-reactroot="" class="VagueImage origin_image zh-lightbox-thumb" data-src="https://pic4.zhimg.com/abc9d033394edd2b0fc9877e196227f3_b.jpeg" style="width: 640px; height: 640px;"></div></span>
+		<span><div data-reactroot="" class="VagueImage2 origin_image zh-lightbox-thumb" data-src="https://pic4.zhimg.com/abc9d033394edd2b0fc9877e196227f3_b.jpeg" style="width: 640px; height: 640px;"></div></span>
 		<noscript>&amp;lt;img data-rawwidth="960" data-rawheight="716" src="https://pic3.zhimg.com/0cee8b160e9f4513c3aa01eca63a2fd6_b.jpeg" class="origin_image zh-lightbox-thumb" width="960" data-original="https://pic3.zhimg.com/0cee8b160e9f4513c3aa01eca63a2fd6_r.jpeg"&amp;gt;</noscript>
-		<span><div data-reactroot="" class="VagueImage origin_image zh-lightbox-thumb" data-src="https://pic1.zhimg.com/5bffc7560d8fe30f13828cb77366f578_b.jpeg" style="width: 640px; height: 640px;"></div></span>
+		<span><div data-reactroot="" class="VagueImage3 origin_image zh-lightbox-thumb" data-src="https://pic1.zhimg.com/5bffc7560d8fe30f13828cb77366f578_b.jpeg" style="width: 640px; height: 640px;"></div></span>
 	</div>
 	<script type="text/javascript">
 		(function() {
@@ -27,7 +27,7 @@
 					var img = new Image();
 					img.src = dataSrc;
 					img.onload = function(e){
-						resolve();
+						resolve(img);
 					}
 				})
 				
@@ -40,25 +40,40 @@
 				}else{
 					viewportH = document.body.scrollTop + document.documentElement.clientHeight;
 				}
-
 				loadImg.VagueImage.forEach(function(item, index, array){
-					if (viewportH >= item.offsetTop) {
-						var canvas = document.createElement('canvas');
-						canvas.width = item.width;
-						canvas.height = item.height;
-						canvas.style.filter = 'blur(10px)';
-						loadImage(item.getAttribute('data-src'))
+					if (item.nextSibling.nextSibling.tagName == 'SPAN') {
+						var tagNode = item.nextSibling.nextSibling.firstChild;
+						if (viewportH >= tagNode.offsetTop) {
+							var canvas = document.createElement('canvas');
+							var ctx=canvas.getContext('2d');
+							canvas.width = tagNode.offsetWidth;
+							canvas.height = tagNode.offsetHeight;
+							canvas.style.filter = 'blur(10px)';
+							loadImage(loadImg.sImgArr[index]).then(function(img){
+								ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+								item.parentNode.replaceChild(canvas, item.nextSibling.nextSibling);
+							})
+							loadImage(loadImg.imgArray[index]).then(function(img){
+								item.parentNode.replaceChild(img, item.nextSibling.nextSibling);
+							});
+						}
 					}
 				})
 			}
 
 			function LoadImage(element){
-
+				var that = this;
+				var sImg, itemImgSrc;
 				this.VagueImage = document.querySelectorAll(element);
-				
+				this.imgArray = [];
+				this.sImgArr = [];
 				this.init = function(){
 					this.VagueImage.forEach(function(item, index, array){
-						loadImage(item.getAttribute('data-src'));
+						itemImgSrc = item.nextSibling.nextSibling.firstChild.getAttribute('data-src');
+						sImg = itemImgSrc.replace('_b', '_60w');
+						that.imgArray.push(itemImgSrc);
+						that.sImgArr.push(sImg);
+						loadImage(sImg);
 					});
 				}
 
@@ -74,9 +89,10 @@
 				}
 			}
 
-			var loadImg = new LoadImage('.VagueImage');
+			var loadImg = new LoadImage('noscript');
 			loadImg.init();
 			loadImg.addEvent(window, 'scroll', asyncLoad);
+
 
 		})();
 	</script>
