@@ -18,15 +18,3 @@ input,button,select,textarea{ outline:none}
 html,body{ min-height: 100%}
 em{font-style: normal;}
 
-.btn{width: 100px; height: 44px; line-height: 44px; position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin: auto; border: 0; cursor: pointer;}
-.dialog{position: fixed; left: 0; right: 0; top: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 10; text-align: center;}
-.dialog:after{height: 100%;}
-.dialog_content,
-.dialog:after{content: ""; display: inline-block; vertical-align: middle;}
-.dialog_content{width: 300px;}
-.dialog_inner{padding: 30px 15px; background: #fff;}
-.dialog_btn_wrap{width: 100%; display: table; white-space: nowrap;}
-.dialog_btn{ width: 50%; display: table-cell; border: 1px solid #eee; background: #ddd; padding: 10px 0; cursor: pointer; color: #333;}
-.dialog_btn:active{background: #eee;color: #333;}
-.dialog_btn:focus{outline: none;}
-.tip{height: 100px; text-align: center;  color: red; position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin: auto; }

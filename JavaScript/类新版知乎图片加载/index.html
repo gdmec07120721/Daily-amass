@@ -2,16 +2,42 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>类新版知乎图片加载</title>
+	<title>类新版知乎延时加载图片</title>
 </head>
 <body>
 	<h3>深圳有哪些好吃又不贵的餐厅？</h3>
-	<div>
-		
+	<div class="List-item">
+		<b><br>3【佳田汤馆】<br>类别：粤菜<br>位置：福田水围村</b><br>
+		<b>人均：55¥左右<br>排队时间：饭点15分钟左右</b>
+		<p>作为广东人，我平时一般都爱去粤菜馆，深圳所有的粤菜馆基本都跑过，但是在汤上面，可以说是深圳最佳。喝了这里的汤，你会觉得大唐靓汤那种寡淡而无味的出品可以关门回家了。</p>
+		<noscript>&amp;lt;img data-rawwidth="960" data-rawheight="716" src="https://pic3.zhimg.com/0cee8b160e9f4513c3aa01eca63a2fd6_b.jpeg" class="origin_image zh-lightbox-thumb" width="960" data-original="https://pic3.zhimg.com/0cee8b160e9f4513c3aa01eca63a2fd6_r.jpeg"&amp;gt;</noscript>
+		<span><div data-reactroot="" class="VagueImage origin_image zh-lightbox-thumb" data-src="https://pic1.zhimg.com/4bba8ec545a2a19beb405059e2adf0b4_b.jpeg" style="width: 640px; height: 640px;"></div></span>
 	</div>
-	<script src="js/client.js"></script>
 	<script type="text/javascript">
-		console.log(window.client)
+		(function() {
+			var VagueImage = document.querySelector('.VagueImage');
+			var noscript = document.getElementsByTagName('noscript')[0]; 
+			var imgWrap = noscript.innerHTML;
+			var VagueImageSrc = VagueImage.getAttribute('data-src');
+			console.log(noscript.nextSibling)
+			var img = new Image();
+			img.src = VagueImageSrc;
+			img.onload = function(e){
+				VagueImage.replaceChild(imgWrap, VagueImage)
+			}
+
+
+			var loadImage = function(){
+				var img = new Image();
+				img.src = VagueImageSrc;
+				img.onload = function(e){
+					VagueImage.replaceChild(imgWrap, VagueImage)
+				}
+			}
+
+			var VagueImage = document.querySelectorAll('.VagueImage').getAttribute('data-src');
+
+		})();
 	</script>
 </body>
 </html>
