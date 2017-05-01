@@ -8,7 +8,7 @@
 
 ### 具体思路、技术方案：
 
--1. 页面打开，先加载所有图片的小图
+-1.页面打开，先加载所有图片的小图
 	
 	//加载所有图片
 	var loadImage = function(dataSrc){
@@ -25,7 +25,7 @@
 		loadImage(sImg);
 	});
 
--2. 当浏览到图片相应位置运用scroll事件判断图片是否出现在可视区，并对其的大图进行加载，加载过程中，先用用canvas渲染小图并加模糊效果，来提升用户体验  
+-2.当浏览到图片相应位置运用scroll事件判断图片是否出现在可视区，并对其的大图进行加载，加载过程中，先用用canvas渲染小图并加模糊效果，来提升用户体验  
 
 对于先把小图加高斯模糊，有三种方案：
 
@@ -33,7 +33,7 @@
 -**2.使用SVG滤镜**
 -**3.使用Canvas的高斯模糊 -- StackBlur.js**
 
-这里使用**使用CSS3blur滤镜**，如果需要兼容可选择**StackBlur.js**
+这里使用**使用CSS3blur滤镜 **，如果需要兼容可选择**StackBlur.js**
 
 
 	var canvas = document.createElement('canvas');
@@ -46,7 +46,7 @@
 		item.parentNode.replaceChild(canvas, item.nextSibling.nextSibling);
 	})
 
--3. 使用ES6的**promise**处理异步加载事件，加载完后img元素代替canvas画的图片
+-3.使用ES6的**promise**处理异步加载事件，加载完后img元素代替canvas画的图片
 
 	var loadImage = function(dataSrc){
 		return new Promise(function(resolve, rejuct){
