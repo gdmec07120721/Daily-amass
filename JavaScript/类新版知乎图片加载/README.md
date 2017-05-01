@@ -29,9 +29,11 @@
 
 对于先把小图加高斯模糊，有三种方案：
 
--**1.使用CSS3blur滤镜** 
--**2.使用SVG滤镜**
--**3.使用Canvas的高斯模糊 -- StackBlur.js**
+-**使用CSS3blur滤镜**
+
+-**使用SVG滤镜**
+
+-**使用Canvas的高斯模糊 -- StackBlur.js**
 
 这里使用**使用CSS3blur滤镜 **，如果需要兼容可选择**StackBlur.js**
 
