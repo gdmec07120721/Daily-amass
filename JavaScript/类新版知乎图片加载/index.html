@@ -73,7 +73,7 @@
 				this.sImgArr = [];
 				this.init = function(){
 					this.contrastEl.forEach(function(item, index, array){
-						itemImgSrc = item.nextSibling.nextSibling.firstChild.getAttribute('data-src');
+						itemImgSrc = that.originEl[index].getAttribute('data-src');
 						sImg = itemImgSrc.replace('_b', '_60w');
 						that.imgArray.push(itemImgSrc);
 						that.sImgArr.push(sImg);
