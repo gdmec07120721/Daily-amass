@@ -35,7 +35,7 @@
 
 -**使用Canvas的高斯模糊 -- StackBlur.js**
 
-这里使用**使用CSS3blur滤镜 **，如果需要兼容可选择**StackBlur.js**
+这里使用**使用CSS3blur滤镜 **，如果需要兼容可选择**[StackBlur.js](http://www.quasimondo.com/StackBlurForCanvas/StackBlurDemo.html)**
 
 
 	var canvas = document.createElement('canvas');
