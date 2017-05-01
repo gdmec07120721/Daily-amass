@@ -1,4 +1,4 @@
-## 类新版知乎延时加载图片 [DEMO]()
+## 类新版知乎延时加载图片 [DEMO](https://gdmec07120721.github.io/Daily-amass/JavaScript/%E7%B1%BB%E6%96%B0%E7%89%88%E7%9F%A5%E4%B9%8E%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/index.html)
 
 一直以来，网站对图片加载，一直都需要不断优化来提升用户体验。
 
