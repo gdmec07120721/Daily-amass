@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>兼容各浏览器的多列布局</title>
+	<style type="text/css">
+		.justify{text-align: justify; background: #fafafa;}
+		.justify:after{content: ''; width: 100%; display: inline-table; *display: inline; *zoom:1; }
+		.justify span{width: 50px; line-height: 50px; display: inline-block; *display: inline; *zoom:1; color: #fff; text-align: center; background: #000; position: relative; top: 10px; }
+
+	</style>
+</head>
+<body>
+	<div class="justify">
+		<span>1</span>
+		<span>2</span>
+		<span>3</span>
+		<span>4</span>
+	</div>
+</body>
+</html>
