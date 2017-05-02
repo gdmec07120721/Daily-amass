@@ -21,7 +21,7 @@
 
 然而即使设置了父元素的文本对齐方式，子元素并没有均匀布局
 
-![Image](https://github.com/gdmec07120721/Daily-amass/CSS3/%E5%85%BC%E5%AE%B9%E5%90%84%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%A4%9A%E5%88%97%E5%9D%87%E5%8C%80%E5%B8%83%E5%B1%80/images/img1.png)
+![Image](./images/img1.png)
 
 于是使用伪元素，设置其宽度为100%，相当于让子元素填充满父级盒子
 
