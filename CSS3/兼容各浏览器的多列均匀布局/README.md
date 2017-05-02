@@ -27,4 +27,4 @@
 
 	.justify:after{content: ''; width: 100%; display: inline-table; *display: inline; *zoom:1; }
 
-[DEMO](https://github.com/gdmec07120721/Daily-amass/CSS3/%E5%85%BC%E5%AE%B9%E5%90%84%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%A4%9A%E5%88%97%E5%9D%87%E5%8C%80%E5%B8%83%E5%B1%80/index.html)
+[DEMO](https://gdmec07120721.github.io/Daily-amass/CSS3/%E5%85%BC%E5%AE%B9%E5%90%84%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%A4%9A%E5%88%97%E5%9D%87%E5%8C%80%E5%B8%83%E5%B1%80/index.html)
