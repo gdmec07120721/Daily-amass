@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vue过滤器</title>
+</head>
+<body>
+	<div id="app">
+		<input type="search" name="search" v-model="fil.value">
+		{{lists | filterFn(fil.value)}}
+		<ul>
+			<li v-for="item in lists" >{{item.message}}</li>
+		</ul>		
+	</div>
+	<script src="./js/vue.js"></script>
+	<script>
+		var vue = new Vue({
+			el: '#app',
+			data:{
+				lists: [
+					{message: '文本'},
+					{message: 'html代码'},
+					{message: '数据输出'},
+					{message: 'ES6'}
+				],
+				fil: {
+					value: ''
+				}
+			},
+			filters: {
+				filterFn: function(value, filValue) {
+
+					let lists = value.filter((item, index, array) => {
+
+							return item.message.indexOf(filValue) > -1
+
+					})
+
+					return lists
+				}
+			} 
+		})
+
+	</script>
+</body>
+</html>
