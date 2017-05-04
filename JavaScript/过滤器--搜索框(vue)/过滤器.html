@@ -5,8 +5,8 @@
 </head>
 <body>
 	<div id="app">
-		<input type="search" name="search" v-model="fil.value">
-		{{lists | filterFn(fil.value)}}
+		<input type="search" name="search" v-model="filValue">
+		{{lists | filterFn(filValue)}}
 		<ul>
 			<li v-for="item in lists" >{{item.message}}</li>
 		</ul>		
@@ -22,20 +22,20 @@
 					{message: '数据输出'},
 					{message: 'ES6'}
 				],
-				fil: {
-					value: ''
+				filValue: ''
+			},
+			watch:{
+				filValue: function(){
+					
 				}
 			},
 			filters: {
-				filterFn: function(value, filValue) {
+				filterFn: function(item, filValue) {
 
-					let lists = value.filter((item, index, array) => {
+					if (item.indexOf(filValue) > -1) {
+						return item
+					}
 
-							return item.message.indexOf(filValue) > -1
-
-					})
-
-					return lists
 				}
 			} 
 		})
