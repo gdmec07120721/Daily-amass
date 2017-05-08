@@ -13,7 +13,7 @@ a,input,button,textarea,label,select,span,img{-webkit-tap-highlight-color:rgba(2
 /* reset end */
 body{font:14px/24px  Arial, "Microsoft YaHei"; color:#282828; background:#EEEEEE; -webkit-text-size-adjust:none;-moz-text-size-adjust:none;-ms-text-size-adjust:none;text-size-adjust:none; min-width:320px; max-width: 750px; margin: 0 auto}
 .fl{float:left;}.fr,.tra_num{float:right;}.hide{display:none;}.show{display: block}
-.yh,input,button,select,textarea{font-family:"Microsoft YaHei"}
+.yh,input,button,select,textarea{font-family:"Microsoft YaHei"; background: none;}
 input,button,select,textarea{ outline:none}
 html,body{ min-height: 100%}
 em{font-style: normal;}
@@ -25,6 +25,7 @@ em{font-style: normal;}
 .car_complete:active{color: #999;}
 .car_goods_item{padding:10px 15px; background: #fff; margin-bottom: 10px;}
 .car_goods_item .goods_selection{margin: 35px 10px 0 0;}
+.car_content{padding-bottom: 40px;}
 .goods_selection,
 .goods_img{float: left;}
 .goods_selection{width: 15px; height: 15px; border: 1px solid #ddd; border-radius: 100%; line-height: 80px; }
@@ -53,14 +54,14 @@ em{font-style: normal;}
 .goods_op{letter-spacing:-4px;}
 .goods_op button{width: 20px; line-height: 20px; display: inline-table; background: none; border: 1px solid #ddd;}
 .goods_op button:active{background: #fafafa;}
-.num_input{display: inline-table; width: 40px; border: 1px solid #ddd; border-left: 0; border-right: 0; line-height: 18px; padding: 1px 5px;}
+.num_input{display: inline-table; width: 40px; text-align: center; border: 1px solid #ddd; border-left: 0; border-right: 0; line-height: 18px; padding: 1px 5px;}
 
-.car_ft{height: 40px; line-height: 40px; position: fixed; left: 0; right: 0; bottom: 0; background: #fff; padding-left:15px;}
+.car_ft{height: 40px; line-height: 40px; position: fixed; left: 0; right: 0; bottom: 0; background: #fff; padding-left:15px; z-index: 100;}
 .car_sel_all{display: inline-block;}
-.account{float: right;}
 .car_ft .goods_selection{margin: 11px 10px 0 0 }
-.account{display: inline-block; padding:0 15px; color: #fff; background: red;}
+.account{float: right;display: inline-block; padding:0 15px; line-height: 40px; color: #fff; background: red; border: 0; }
 .account:active{background: rgba(255,0,0,0.6);}
 
-.goods_longer{float: left; line-height: 1.4em; font-size: 12px; color: #fff; background: #ddd; border-radius: 2px; padding: 0 2px; margin: 30px 6px 0 -7px; }
+.goods_longer{float: left; line-height: 1.4em; font-size: 12px; color: #fff; background: #ddd; border-radius: 2px; padding: 0 2px; margin: 30px 6px 0 -9px; }
 .goods_total_num{position: absolute; left: 102px; top: 0;}
+.car_void{height: 24px; line-height: 24px; position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin: auto; text-align: center;}
