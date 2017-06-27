@@ -21,9 +21,12 @@
 
 <script>
 	export default{
-		props:[
-			'data'
-		],
+		props:{
+			data: {
+				type: Array,
+        default: []
+			}
+		},
 		data(){
 			return{
 				newData: this.data, //所有数据
