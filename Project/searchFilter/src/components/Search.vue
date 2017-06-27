@@ -1,4 +1,4 @@
-<style scope>
+<style scoped>
 	ul,li{list-style-type: none; padding: 0; margin: 0;}
 	.wrap{position: relative; display: inline-block;}
 	.search_filter{width: 300px; padding: 5px 7px; border: 1px solid #ddd;}
