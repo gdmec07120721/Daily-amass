@@ -15,7 +15,7 @@ XMLHttpRequest是一个浏览器接口，也是现在常用于与后台服务器
 
 log一个新创建的FormData实例，可以清楚地看到FormData有哪些方法。FormData对象方法如下图：
 
-               
+![Image](./images/Image.png)              
                
 1.append 方法
 
