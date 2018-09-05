@@ -1,12 +1,13 @@
 <!--
- Created by xaobi on 2018/2/28.
+ Created by xaobi
  -->
 
 <style type="text/css" scoped>
+	*{list-style-type:none; text-decoration:none}  
 	label{margin: 0; font-weight: 400; font-size: 14px;}
 	.checkbox{margin: 5px 0;}
 	.no-i-crright{display: inline-block; vertical-align: middle;}
-	.i-icon{padding:0 6px; width: 16px; display: inline-block;}
+	.i-icon{width: 8px; display: inline-block;}
 	.i-crright:after,
 	.i-crdown:after{content: ''; display: inline-block; vertical-align: middle; width: 0;height: 0; }
 	.i-crright:after{border-top: 4px solid transparent; border-left: 4px solid #ababab;border-bottom: 4px solid transparent;}
@@ -49,8 +50,8 @@
 					<label class="checkbox-wrapper checkbox-wrapper-checked" @click.self="toggle(index)">{{item.label}}</label>	            	
 	            </template>
 	            <div class="tree-operat" v-if="customTree">
-	            	<a href="javascript:;" @click="add(item, index)"><i class="iconfont i-add"></i></a>
-	            	<a href="javascript:;" @click="delect(item, index)"><i class="iconfont i-minus"></i></a>
+	            	<a href="javascript:;" @click="add(item, index)"><i class="iconfont i-add">+</i></a>
+	            	<a href="javascript:;" @click="delect(item, index)"><i class="iconfont i-minus">-</i></a>
 	            </div>
 			</a>
 			<Tree :model="item.children" v-if="item.isFolder" v-show="item.open" v-model="checked_value" :nodeKey="nodeKey" :defaultProps="defaultProps" :showCheckbox="showCheckbox" @operat="operation" :style="style_object" :filterNode="filterNode" :customTree="customTree"></Tree>
@@ -129,6 +130,7 @@
 				this.checked_value = value;
 			},
 			checked_value(value){
+				console.log(value)
 				this.$emit('input', value);
 			},
 			model(list){
@@ -149,7 +151,7 @@
 					text: ''
 				},
 				style_object: {
-					paddingLeft: '20px'
+					paddingLeft: '40px'
 				}
 			}
 		},
@@ -183,6 +185,7 @@
 			//对选中节点的子节点进行操作
 			checked(item, e){
 				let self = this;
+				console.log(item)
 
 				//判断当前选中复选框是否有子元素
 				if (item.children && item.children.length) {
@@ -194,6 +197,7 @@
 						this.checked_value = [...new Set([...arr, ...this.checked_value])];
 					}else{
 						//反则，其子元素全部不选中
+						arr.push(item.id);
 						arr.forEach(i => {
 							let index = self.checked_value.findIndex(t => t === i);
 
