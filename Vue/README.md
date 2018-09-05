@@ -1,4 +1,4 @@
-## Tree 树形控件 [DEMO]](https://gdmec07120721.github.io/Daily-amass/Vue/dist/index.html)
+## Tree 树形控件 [DEMO](https://gdmec07120721.github.io/Daily-amass/Vue/dist/index.html)
 
 
 `Tree`树形控件可把信息清晰并且有层次结构地展示，数据还可以通过展开、折叠、筛选交互得到更好的用户体验，同时还适用于需要选择层级时使用，支持自定义节点内容。
