@@ -1,8 +1,8 @@
-## 类新版知乎延时加载图片 [DEMO](https://gdmec07120721.github.io/Daily-amass/JavaScript/%E7%B1%BB%E6%96%B0%E7%89%88%E7%9F%A5%E4%B9%8E%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/index.html)
+## 懒加载图片 [DEMO](https://gdmec07120721.github.io/Daily-amass/JavaScript/%E7%B1%BB%E6%96%B0%E7%89%88%E7%9F%A5%E4%B9%8E%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/index.html)
 
 一直以来，网站对图片加载，一直都需要不断优化来提升用户体验。
 
-新版知乎图片加载思路：
+懒加载思路：
 
 有两张图片，一张是宽度为60px的小图，一张是原图。页面打开，默认只加载小图，节约流量让首屏更快展示。当浏览到图片相应的位置，先把小图用canvas加高斯模糊处理，再加载大图。
 
