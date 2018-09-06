@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Xaobi Github日志记录</title>
+  <!-- import CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+  <div id="app">
+    <h3>Xaobi Github日志记录</h3>
+    <p>Github只是代码分享平台之一，在【点击=>】<a href="http://runjs.cn/detail/tvgqqwmk" target="_blank">RunJS</a>查看更多在线编辑平台记录日常代码</p>
+    <el-table
+    :data="tableData"
+    border
+    style="width: 100%">
+	    <el-table-column
+	      prop="date"
+	      label="日期">
+	    </el-table-column>
+	    <el-table-column
+	      prop="name"
+	      label="姓名">
+	    </el-table-column>
+	    <el-table-column
+	      prop="desc"
+	      label="描述">
+	    </el-table-column>
+	    <el-table-column
+	      fixed="right"
+	      label="链接到"
+	      width="150">
+	      <template slot-scope="scope">
+	        <el-button type="text" size="small" @click="toUrl(scope.row.demo_url)">Demo</el-button>
+	        <el-button type="text" size="small" @click="toUrl(scope.row.github_url)">Github</el-button>
+	      </template>
+	    </el-table-column>
+	  </el-table>
+  </div>
+</body>
+  <!-- import Vue before Element -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+	      return {
+	        tableData: [{
+	          date: '2018-08',
+	          name: 'Tree树形组件',
+	          desc: '树形控件可把信息清晰并且有层次结构地展示，数据还可以通过展开、折叠、筛选交互得到更好的用户体验，同时还适用于需要选择层级时使用，支持自定义节点内容。',
+	          demo_url: 'https://gdmec07120721.github.io/Daily-amass/Vue/dist/index.html',
+	          github_url: 'https://github.com/gdmec07120721/Daily-amass/tree/master/Vue'
+	        }, {
+	          date: '2018-07',
+	          name: 'FormData对象方法的了解和运用',
+	          desc: 'FormData可以提交表单，模拟表单提交，最重要的是它可以上传二进制文件',
+	          demo_url: 'https://gdmec07120721.github.io/Daily-amass/xaobi/17-07-28/',
+	          github_url: 'https://github.com/gdmec07120721/Daily-amass/tree/master/xaobi/17-07-28'
+	        }, {
+	          date: '2018-05',
+	          name: '告白气球',
+	          desc: '情人节表白页面（移动端）',
+	          demo_url: 'https://gdmec07120721.github.io/Secret2018/520/index.html',
+	          github_url: 'https://github.com/gdmec07120721/Secret2018/tree/master/520'
+	        }, {
+	          date: '2017',
+	          name: '使用vue-cli脚手架实现多页访问',
+	          desc: '使用vue-cli脚手架实现多页访问',
+	          demo_url: '',
+	          github_url: 'https://github.com/gdmec07120721/tokenDemo/tree/master/application'
+	        }, {
+	          date: '2017',
+	          name: 'promise场景应用--自定义弹窗',
+	          desc: '使用RequireJs模块加载器，让弹窗的模块化。使用Promise操作触发不同按钮处理',
+	          demo_url: 'https://gdmec07120721.github.io/Daily-amass/JavaScript/promise%E5%9C%BA%E6%99%AF%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%E4%B8%80/index.html',
+	          github_url: 'https://github.com/gdmec07120721/Daily-amass/tree/master/JavaScript/promise%E5%9C%BA%E6%99%AF%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%E4%B8%80'
+	        }, {
+	          date: '2017',
+	          name: '图片懒加载',
+	          desc: '一直以来，网站对图片加载，一直都需要不断优化来提升用户体验，图片懒加载是比较的优化方法之一',
+	          demo_url: 'https://gdmec07120721.github.io/Daily-amass/JavaScript/%E7%B1%BB%E6%96%B0%E7%89%88%E7%9F%A5%E4%B9%8E%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/index.html',
+	          github_url: 'https://github.com/gdmec07120721/Daily-amass/tree/master/JavaScript/%E7%B1%BB%E6%96%B0%E7%89%88%E7%9F%A5%E4%B9%8E%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD'
+	        }, {
+	          date: '2017',
+	          name: '编辑器',
+	          desc: '简单编辑器',
+	          demo_url: 'https://gdmec07120721.github.io/Daily-amass/JavaScript/%E7%BC%96%E8%BE%91%E5%99%A8/test2.html',
+	          github_url: 'https://github.com/gdmec07120721/Daily-amass/tree/master/JavaScript/%E7%BC%96%E8%BE%91%E5%99%A8'
+	        }]
+	      }
+	    },
+	    methods: {
+	    	toUrl(url) {
+	    		if (url) {
+	    			window.open(url)
+	    		}
+	    	}
+	    }
+    })
+  </script>
+</html>
