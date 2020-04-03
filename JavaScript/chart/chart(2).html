@@ -12,7 +12,7 @@
     <title>canvas</title>
   </head>
   <body>
-    <canvas id="canvas" width="830" height="1420"></canvas>
+    <canvas id="canvas" width="830" height="1000"></canvas>
     <script>
       var canvas = document.getElementById('canvas');
       var ctx = canvas.getContext('2d');
@@ -29,10 +29,30 @@
         topName: 'Length',
         bottomName: 'Weight'
       }
-      var xAxisSText = 22; //x轴开始值
-      var xAxisEText = 50; //x轴结束值
+      
+      //坐标轴的大小值
+      var axisText = {
+        x: { //x轴
+          start: 22, //开始值
+          end: 50 //结束值
+        },
+        y: { //y轴
+          left: {
+            topNum: 10,
+            topMin: 15,
+            btmNum: 8,
+            btmMin: 0,
+          },
+          right: {
+            topNum: 5,
+            topMin: 40,
+            btmNum: 13,
+            btmMin: 0,
+          }
+        }
+      }
 
-      var intervalX = (width - padding) / (xAxisEText - xAxisSText + 2); //x轴细线网格间隔
+      var intervalX = (width - padding) / (axisText.x.end - axisText.x.start + 2); //x轴细线网格间隔
       var intervalY = 10; //y轴细线网格间隔
       var boldX = 2, boldY = 5; //网格间隔数
       var intervalBoldX = intervalX * boldX; //x轴粗线网格间隔
@@ -52,8 +72,8 @@
       //-----------------------绘画 x轴、y轴------------------
       ctx.beginPath();
       // x轴
-      ctx.moveTo(origin.x, origin.y);
-      ctx.lineTo(width - padding, origin.y);
+      ctx.moveTo(origin.x - 1, origin.y);
+      ctx.lineTo(width - padding - 1, origin.y);
       ctx.stroke();
       
       // y轴
@@ -73,7 +93,7 @@
         var xlen = grid.xlineLength * t;
 
         ctx.moveTo(padding + xlen + 0.5, height - padding + 0.5);
-        ctx.lineTo(padding + xlen + 0.5, padding + 0.5);
+        ctx.lineTo(padding + xlen + 0.5, padding);
         ctx.stroke();
       }
       
@@ -82,7 +102,7 @@
         var ylen = grid.ylineLength * (i);
 
         ctx.moveTo(padding + 0.5, height - padding - ylen + 0.5);
-        ctx.lineTo(width - padding + 0.5, height - padding - ylen + 0.5);
+        ctx.lineTo(width - padding - 1, height - padding - ylen + 0.5);
         ctx.stroke();
       }
 
@@ -104,7 +124,7 @@
         ctx.moveTo(xlineCs, height - padding + 0.5);
         ctx.lineTo(xlineCs, padding + 0.5);
         ctx.stroke();
-        ctx.fillText(xAxis + xAxisSText, padding + xlen - 5, height - padding + 15); //图表下的x轴值
+        ctx.fillText(xAxis + axisText.x.start, padding + xlen - 5, height - padding + 15); //图表下的x轴值
         //ctx.fillText(xAxis, padding + xlen - 5, padding - 8); //图表上的x轴值
       }
 
@@ -117,40 +137,39 @@
         //y轴左边值计算
         var spliceNumLeft = (maximumL.min / 5) - 1;
 
-        if (bi < spliceNumLeft) {
+        if (bi <= axisText.y.left.btmNum) {
           yLeftAxis = (bi * 0.5).toFixed(1);
-        } else if (bi > spliceNumLeft) {
-          yLeftAxis = bi * 5;
+        } else {
+          yLeftAxis = ((bi - axisText.y.left.btmNum - 1) * 5) + axisText.y.left.topMin;
         }
 
         pointsY[pointsY.length] = ylineCs;
 
-        ctx.moveTo(padding - 30 + 0.5, ylineCs);
-        ctx.lineTo(width - padding - 0.5 + 30, ylineCs);
+        ctx.moveTo(padding + 0.5, ylineCs);
+        ctx.lineTo(width - padding - 1, ylineCs);
         ctx.stroke();
 
         //y轴左边值
         if (!!yLeftAxis) {
-          console.log(yLeftAxis)
           ctx.beginPath();
-          ctx.fillStyle = '#fff';
-          ctx.fillRect(padding - 22, height - padding - ylen - 5, ctx.measureText(yLeftAxis).width + 5, 10); //(x,y,w,h)
-          ctx.fillStyle = '#000';
+          // ctx.fillStyle = '#fff';
+          // ctx.fillRect(padding - 22, height - padding - ylen - 5, ctx.measureText(yLeftAxis).width + 5, 10); //(x,y,w,h)
+          // ctx.fillStyle = '#000';
           ctx.fillText(yLeftAxis, padding - 20, height - padding - ylen + 4);
         }
 
         //y轴右边值计算
-        if (bi < maximumW.max + 1) {
+        if (bi <= axisText.y.right.btmNum) {
           yRightAxis = (bi * 0.5).toFixed(1);
-        } else if (bi > maximumW.max + 1) {
-          yRightAxis = bi * 5;
+        } else {
+          yRightAxis = ((bi - axisText.y.right.btmNum - 1) * 5) + axisText.y.right.topMin;
         }
 
         if (yRightAxis) {
           ctx.beginPath();
-          ctx.fillStyle = '#fff';
-          ctx.fillRect(width - padding + 5, height - padding - ylen - 5, ctx.measureText(yRightAxis).width + 5, 10); //(x,y,w,h)
-          ctx.fillStyle = '#000';
+          // ctx.fillStyle = '#fff';
+          // ctx.fillRect(width - padding + 5, height - padding - ylen - 5, ctx.measureText(yRightAxis).width + 5, 10); //(x,y,w,h)
+          // ctx.fillStyle = '#000';
           ctx.fillText(yRightAxis, width - padding  + 6, height - padding - ylen + 4);
         }
       }
@@ -182,7 +201,7 @@
       //绘画数据
       //params type 判断是身高还是体重 0：身高 1：体重
       function drawData(data, type = 0) {
-        var scale = 0.01; //控制点
+        var scale = 0.03; //控制点
         
         if (type) {
           data = data.map(function(item) {
@@ -222,10 +241,10 @@
 
       //获取网格信息
       function getGridInfo(intervalX, intervalY) {
-        var xlineNumber = Math.floor((width - padding * 2) / intervalX);
-        var xlineLength = Math.floor((width - padding * 2) / xlineNumber);
-        var ylineNumber = Math.floor((height - padding * 2) / intervalY); //y轴线条数
-        var ylineLength = Math.floor((height - padding * 2) / ylineNumber); //y轴每一个线之间的像素
+        var xlineNumber = parseFloat((width - padding * 2) / intervalX);
+        var xlineLength = parseFloat((width - padding * 2) / xlineNumber);
+        var ylineNumber = parseFloat((height - padding * 2) / intervalY); //y轴线条数
+        var ylineLength = parseFloat((height - padding * 2) / ylineNumber); //y轴每一个线之间的像素
 
         return { xlineNumber, xlineLength, ylineNumber, ylineLength }
       }
@@ -233,7 +252,7 @@
       //获取点的XY坐标
       function getPointXY(i , item) {
         var pointX = pointsX[i];
-        var pointY = Math.floor(origin.y - ((origin.y - padding) * item / (blodGrid.ylineNumber / 2))); //blodGrid.ylineNumber表示y轴的网线最大值
+        var pointY = parseFloat(origin.y - (parseFloat(parseFloat((origin.y - padding) * item) / (blodGrid.ylineNumber / 2)))); //blodGrid.ylineNumber表示y轴的网线最大值
 
         return {x: pointX, y: pointY}
       }
